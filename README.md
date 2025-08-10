@@ -129,7 +129,7 @@ Each parcel follows a defined lifecycle, tracked by its status, which is updated
 -   **DISPATCHED**: The parcel is picked up and en route to the hub.
 -   **IN_TRANSIT**: The parcel is between hubs or out for final delivery.
 -   **DELIVERED**: The receiver has received the parcel.
--   **CANCELLED**: The sender or admin cancels the parcel (only possible in `REQUESTED` or `APPROVED` states).
+-   **CANCELLED**: The sender or admin cancels the parcel (only possible in `REQUESTED` states).
 
 ### Fee Calculation & Coupon Usage
 
