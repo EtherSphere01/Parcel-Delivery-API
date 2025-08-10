@@ -5,6 +5,7 @@
 A secure, modular, and role-based backend API for a parcel delivery system, built with **Express.js**, **TypeScript**, and **Mongoose**. This system enables users to register, create parcel delivery requests, and track their status through a complete lifecycle, with administrative controls for user management, parcel oversight, and promotional campaigns.
 
 ### Live Link : https://parcel-delivery-api-amber.vercel.app/
+### Postman APIs collection: https://github.com/EtherSphere01/Parcel-Delivery-API/blob/main/Parcel%20Delivery%20API.postman_collection.json
 
 ## ✨ Features
 
@@ -128,7 +129,7 @@ Each parcel follows a defined lifecycle, tracked by its status, which is updated
 -   **DISPATCHED**: The parcel is picked up and en route to the hub.
 -   **IN_TRANSIT**: The parcel is between hubs or out for final delivery.
 -   **DELIVERED**: The receiver has received the parcel.
--   **CANCELLED**: The sender or admin cancels the parcel (only possible in `REQUESTED` or `APPROVED` states).
+-   **CANCELLED**: The sender or admin cancels the parcel (only possible in `REQUESTED` states).
 
 ### Fee Calculation & Coupon Usage
 
@@ -196,9 +197,5 @@ Each parcel follows a defined lifecycle, tracked by its status, which is updated
 -   Ensure MongoDB is running locally or use a cloud-based MongoDB instance (e.g., MongoDB Atlas) for the `DB_URL`.
 -   Use strong, unique secrets for `JWT_ACCESS_SECRET` and `JWT_REFRESH_SECRET` to ensure security.
 -   The admin seed credentials (`ADMIN_EMAIL`, `ADMIN_PASSWORD`, `ADMIN_PHONE`) are used to create an initial admin user during setup.
-
-## 📜 License
-
-This project is licensed under the MIT License.
 
 </xaiArtifact>
