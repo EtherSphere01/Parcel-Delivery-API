@@ -412,7 +412,7 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:5000/api/v1/parcels/all",
+							"raw": "http://localhost:5000/api/v1/parcels/all?status=DELIVERED",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -423,6 +423,41 @@
 								"v1",
 								"parcels",
 								"all"
+							],
+							"query": [
+								{
+									"key": "status",
+									"value": "DELIVERED"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get by Track Id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODk4OWU3OGM5MDI1NDJjYjA5YjM0N2YiLCJlbWFpbCI6ImpvaG5kb2UyQGV4YW1wbGUuY29tIiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNzU0ODQzNTY1LCJleHAiOjE3NTQ5Mjk5NjV9.PU4hLg7Gq5ZlDZePpKqxtvjeYUxOckmmratTQEx3H5g",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:5000/api/v1/parcels/track/TRK-20250811-123456",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"parcels",
+								"track",
+								"TRK-20250811-123456"
 							]
 						}
 					},
