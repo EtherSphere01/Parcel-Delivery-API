@@ -5,6 +5,7 @@
 A secure, modular, and role-based backend API for a parcel delivery system, built with **Express.js**, **TypeScript**, and **Mongoose**. This system enables users to register, create parcel delivery requests, and track their status through a complete lifecycle, with administrative controls for user management, parcel oversight, and promotional campaigns.
 
 ### Live Link : https://parcel-delivery-api-amber.vercel.app/
+
 ### Postman APIs collection: https://github.com/EtherSphere01/Parcel-Delivery-API/blob/main/Parcel%20Delivery%20API.postman_collection.json
 
 ## ✨ Features
@@ -166,14 +167,15 @@ Each parcel follows a defined lifecycle, tracked by its status, which is updated
 
 ### Parcel Module (`/parcels`)
 
-| Method | Endpoint             | Access         | Description                                     |
-| ------ | -------------------- | -------------- | ----------------------------------------------- |
-| POST   | `/`                  | SENDER         | Create a new parcel delivery request.           |
-| GET    | `/me`                | SENDER         | Get all parcels created by the sender.          |
-| GET    | `/incoming-parcels`  | RECEIVER       | Get all parcels addressed to the receiver.      |
-| GET    | `/all`               | ADMIN          | Get a list of all parcels in the system.        |
-| PATCH  | `/cancel/:id`        | SENDER / ADMIN | Cancel a parcel in REQUESTED or APPROVED state. |
-| PATCH  | `/update-status/:id` | ADMIN          | Update the delivery status of a parcel.         |
+| Method | Endpoint                | Access         | Description                                     |
+| ------ | ----------------------- | -------------- | ----------------------------------------------- |
+| POST   | `/`                     | SENDER         | Create a new parcel delivery request.           |
+| GET    | `/me`                   | SENDER         | Get all parcels created by the sender.          |
+| GET    | `/incoming-parcels`     | RECEIVER       | Get all parcels addressed to the receiver.      |
+| GET    | `/all`                  | ADMIN          | Get a list of all parcels in the system.        |
+| GET    | `/all?status=DELIVERED` | ADMIN          | Get a list of all parcels with filter.          |
+| PATCH  | `/cancel/:id`           | SENDER / ADMIN | Cancel a parcel in REQUESTED or APPROVED state. |
+| PATCH  | `/update-status/:id`    | ADMIN          | Update the delivery status of a parcel.         |
 
 ### Coupon Module (`/coupons`)
 
