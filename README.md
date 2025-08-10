@@ -198,8 +198,4 @@ Each parcel follows a defined lifecycle, tracked by its status, which is updated
 -   Use strong, unique secrets for `JWT_ACCESS_SECRET` and `JWT_REFRESH_SECRET` to ensure security.
 -   The admin seed credentials (`ADMIN_EMAIL`, `ADMIN_PASSWORD`, `ADMIN_PHONE`) are used to create an initial admin user during setup.
 
-## 📜 License
-
-This project is licensed under the MIT License.
-
 </xaiArtifact>
