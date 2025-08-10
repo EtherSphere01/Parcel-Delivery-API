@@ -1,0 +1,678 @@
+{
+	"info": {
+		"_postman_id": "d1932e82-8426-4123-af23-9b59639bd694",
+		"name": "Parcel Delivery API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "40646317",
+		"_collection_link": "https://martian-desert-672899.postman.co/workspace/My-Workspace~9b19a18e-8b7a-4c5e-88a7-f1804815aebf/collection/40646317-d1932e82-8426-4123-af23-9b59639bd694?action=share&source=collection_link&creator=40646317"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"John Doe\",\r\n    \"email\": \"johndoe2@example.com\",\r\n    \"password\": \"Naimur@123\",\r\n    \"phone\": \"+8801234567891\",\r\n    \"role\":\"RECEIVER\",\r\n    \"address\": \"123 Main Street, Springfield, USA\"\r\n}\r\n"
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get new access token",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"refreshToken\" :\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODk4OWU3OGM5MDI1NDJjYjA5YjM0N2YiLCJlbWFpbCI6ImpvaG5kb2UyQGV4YW1wbGUuY29tIiwicm9sZSI6IlJFQ0VJVkVSIiwiaWF0IjoxNzU0ODM0MzQ2LCJleHAiOjE3NTQ5MjA3NDZ9.Q9ouamsz43RHBDr4XMHE61Dtn_FskuHCp8ZQLsBNohY\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/auth/refresh-token",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"refresh-token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"sabbir32@gmail.com\",\r\n    \"password\": \"Pass@12345\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/auth/logout",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Change Password",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODk4OWU3OGM5MDI1NDJjYjA5YjM0N2YiLCJlbWFpbCI6ImpvaG5kb2UyQGV4YW1wbGUuY29tIiwicm9sZSI6IlJFQ0VJVkVSIiwiaWF0IjoxNzU0ODM3MTUxLCJleHAiOjE3NTQ5MjM1NTF9.rYGa_DzMOu-2Klb6j_8rssL1qbPOFtSS3l3Ke3ikffE",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"johndoe2@example.com\",\r\n    \"oldPassword\": \"Naimur@123\",\r\n    \"newPassword\":\"Naimur@1234\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/auth/change-password",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"change-password"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Register User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"John Doe\",\r\n    \"email\": \"johndoe2@example.com\",\r\n    \"password\": \"Naimur@123\",\r\n    \"phone\": \"+8801234567891\",\r\n    \"role\":\"RECEIVER\",\r\n    \"address\": \"123 Main Street, Springfield, USA\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/user/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "All Users",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Single User",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODczYmRiZGQ5M2RhYmRmNDFmZDY4YzgiLCJlbWFpbCI6InNhYmJpcjMyQGdtYWlsLmNvbSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTc1MjQxOTk4NSwiZXhwIjoxNzUyNTA2Mzg1fQ.vcQmzfxnbG84uiJfretUpLOChAaHav-IzmIEinRKxtw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Sabbir Ahmed\",\r\n    \"email\": \"dabbir@gmail.com\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/user/68989e78c902542cb09b347f",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"68989e78c902542cb09b347f"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Me",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODk4OWU3OGM5MDI1NDJjYjA5YjM0N2YiLCJlbWFpbCI6ImpvaG5kb2UyQGV4YW1wbGUuY29tIiwicm9sZSI6IlJFQ0VJVkVSIiwiaWF0IjoxNzU0ODM3NTQwLCJleHAiOjE3NTQ5MjM5NDB9.miwzt93JzlBy-qfoaS7vhfmlDAOlXHfb0gkOq4WiKOA",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Sabbir Ahmed\",\r\n    \"email\": \"dabbir@gmail.com\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/user/me",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"me"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODk4OWU3OGM5MDI1NDJjYjA5YjM0N2YiLCJlbWFpbCI6ImpvaG5kb2UyQGV4YW1wbGUuY29tIiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNzU0ODM4MzcyLCJleHAiOjE3NTQ5MjQ3NzJ9.p_j0jDQ1N6HEUYC793c-kx0GneOawM6MhlMApSqk2Lg",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Sabbir Ahmed\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/user/68989e78c902542cb09b347f",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"68989e78c902542cb09b347f"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODk4OWU3OGM5MDI1NDJjYjA5YjM0N2YiLCJlbWFpbCI6ImpvaG5kb2UyQGV4YW1wbGUuY29tIiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNzU0ODM3OTQxLCJleHAiOjE3NTQ5MjQzNDF9.s6hc9AjftQfpsLBrbS9QYO_A41aBI2gLBIgD9cLu1Zs",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Parcel",
+			"item": [
+				{
+					"name": "Create Parcel",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODk4YmZjYWQ4YjIyNjk2NDg3MTY1M2MiLCJlbWFpbCI6ImpvaG5kb2U2QGV4YW1wbGUuY29tIiwicm9sZSI6IlNFTkRFUiIsImlhdCI6MTc1NDg0MjgzNiwiZXhwIjoxNzU0OTI5MjM2fQ.w3MebtRFQx0s8-JWy1OYK8Sx3tNUIIaLgCLGKka_iLU",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"receiverPhone\": \"+8801234567493\",\r\n    \"parcelDescription\": \"A new smartphone\",\r\n    \"weight\": 0.8,\r\n    \"couponCode\": \"WINTER30\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/parcels",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"parcels"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Parcel by me",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODk4YmZjYWQ4YjIyNjk2NDg3MTY1M2MiLCJlbWFpbCI6ImpvaG5kb2U2QGV4YW1wbGUuY29tIiwicm9sZSI6IlNFTkRFUiIsImlhdCI6MTc1NDg0MjgzNiwiZXhwIjoxNzU0OTI5MjM2fQ.w3MebtRFQx0s8-JWy1OYK8Sx3tNUIIaLgCLGKka_iLU",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"receiverPhone\": \"+8801234567493\",\r\n    \"parcelDescription\": \"A new smartphone\",\r\n    \"weight\": 0.8\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/parcels/me",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"parcels",
+								"me"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Incoming Parcel",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Parcel",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODk4OWU3OGM5MDI1NDJjYjA5YjM0N2YiLCJlbWFpbCI6ImpvaG5kb2UyQGV4YW1wbGUuY29tIiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNzU0ODQzNTY1LCJleHAiOjE3NTQ5Mjk5NjV9.PU4hLg7Gq5ZlDZePpKqxtvjeYUxOckmmratTQEx3H5g",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:5000/api/v1/parcels/all",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"parcels",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cancel Parcel",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODk4OWU3OGM5MDI1NDJjYjA5YjM0N2YiLCJlbWFpbCI6ImpvaG5kb2UyQGV4YW1wbGUuY29tIiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNzU0ODQzNTY1LCJleHAiOjE3NTQ5Mjk5NjV9.PU4hLg7Gq5ZlDZePpKqxtvjeYUxOckmmratTQEx3H5g",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:5000/api/v1/parcels/cancel/6898c854825bdd1f67d0955b",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"parcels",
+								"cancel",
+								"6898c854825bdd1f67d0955b"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update status",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODk4OWU3OGM5MDI1NDJjYjA5YjM0N2YiLCJlbWFpbCI6ImpvaG5kb2UyQGV4YW1wbGUuY29tIiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNzU0ODQzNTY1LCJleHAiOjE3NTQ5Mjk5NjV9.PU4hLg7Gq5ZlDZePpKqxtvjeYUxOckmmratTQEx3H5g",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"status\": \"APPROVED\",\r\n    \"notes\": \"Parcel request approved by admin.\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/parcels/update-status/6898c854825bdd1f67d0955b",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"parcels",
+								"update-status",
+								"6898c854825bdd1f67d0955b"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Coupon",
+			"item": [
+				{
+					"name": "Create Coupon",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Get all coupon",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Get Coupon By Id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"sabbir32@gmail.com\",\r\n    \"password\": \"Pass@12345\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/coupons",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"coupons"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Toggle Coupon Status",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/v1/coupons",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"coupons"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Coupon",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"discountPercentage\": 10,\r\n    \"expiryDate\": \"2026-01-01\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/coupons/6898cdd1d60909524dd4f6d3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"coupons",
+								"6898cdd1d60909524dd4f6d3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Coupon",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODk4OWU3OGM5MDI1NDJjYjA5YjM0N2YiLCJlbWFpbCI6ImpvaG5kb2UyQGV4YW1wbGUuY29tIiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNzU0ODQ2MDk4LCJleHAiOjE3NTQ5MzI0OTh9.u0gCUrZf6x-axotIJZYdRGAHduP37ZTM8e6vLU9N2xw",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:5000/api/v1/coupons/6898cdd1d60909524dd4f6d3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"coupons",
+								"6898cdd1d60909524dd4f6d3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Admin",
+			"item": [
+				{
+					"name": "Dashboard Stats",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODk4YmZjYWQ4YjIyNjk2NDg3MTY1M2MiLCJlbWFpbCI6ImpvaG5kb2U2QGV4YW1wbGUuY29tIiwicm9sZSI6IlNFTkRFUiIsImlhdCI6MTc1NDg0MjgzNiwiZXhwIjoxNzU0OTI5MjM2fQ.w3MebtRFQx0s8-JWy1OYK8Sx3tNUIIaLgCLGKka_iLU",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"receiverPhone\": \"+8801234567493\",\r\n    \"parcelDescription\": \"A new smartphone\",\r\n    \"weight\": 0.8,\r\n    \"couponCode\": \"WINTER30\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/admin/dashboard-stats",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"admin",
+								"dashboard-stats"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "check server",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	]
+}
