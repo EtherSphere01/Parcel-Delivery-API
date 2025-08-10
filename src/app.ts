@@ -1,19 +1,22 @@
 import express, { Request, Response } from "express";
-import expressSession from "express-session";
 import { router } from "./app/routes";
-import { setupSwagger } from "./swagger";
+import { globalErrorHandler } from "./app/middlewares/globalErrorHandler";
+import notFound from "./app/middlewares/notFound";
+import cookieParser from "cookie-parser";
+import cors from "cors";
+import { envVars } from "./app/config/env";
 
 const app = express();
 
 app.use(
-    expressSession({
-        secret: "your-secret-key",
-        resave: false,
-        saveUninitialized: false,
+    cors({
+        origin: envVars.FRONT_END_URL,
+        credentials: true,
     })
 );
 
 app.use(express.json());
+app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
 app.use("/api/v1", router);
 app.get("/", (req: Request, res: Response) => {
@@ -23,6 +26,7 @@ app.get("/", (req: Request, res: Response) => {
     });
 });
 
-setupSwagger(app);
+app.use(globalErrorHandler);
+app.use(notFound);
 
 export default app;
