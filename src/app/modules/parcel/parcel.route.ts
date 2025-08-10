@@ -41,4 +41,6 @@ router.patch(
     parcelController.updateParcelStatus
 );
 
+router.get("/track/:trackingId", parcelController.trackParcelById);
+
 export const ParcelRoutes = router;

@@ -5,7 +5,6 @@ import { Parcel } from "./parcel.model";
 import { JwtPayload } from "jsonwebtoken";
 import { User } from "../user/user.model";
 import { Coupon } from "../coupon/coupon.model";
-
 import { Types } from "mongoose";
 import { Role } from "../user/user.interface";
 
@@ -48,10 +47,6 @@ const createParcel = async (
         );
     }
 
-    if (!weight) {
-        throw new AppError(httpStatus.BAD_REQUEST, "Weight is required");
-    }
-
     let deliveryFee = calculateFee(weight);
 
     if (couponCode) {
@@ -79,7 +74,8 @@ const createParcel = async (
     };
 
     const newParcel = await Parcel.create({
-        ...payload,
+        parcelDescription: payload.parcelDescription,
+        weight: payload.weight,
         sender: senderInfo.userId,
         receiver: receiverUser._id,
         deliveryFee,
@@ -90,17 +86,25 @@ const createParcel = async (
     return newParcel;
 };
 
-const getAllParcelsByAdmin = async () => {
-    const parcels = await Parcel.find({})
+const getAllParcelsByAdmin = async (query: Record<string, unknown>) => {
+    const filter: Record<string, unknown> = {};
+
+    if (query.status) {
+        filter.status = query.status;
+    }
+
+    const parcels = await Parcel.find(filter)
         .populate("sender", "name email phone")
+        .populate("receiver", "name email phone")
         .sort({ createdAt: -1 });
+
     return parcels;
 };
 
 const getParcelsBySender = async (senderId: string) => {
-    const parcels = await Parcel.find({ sender: senderId }).sort({
-        createdAt: -1,
-    });
+    const parcels = await Parcel.find({ sender: senderId })
+        .populate("receiver", "name phone address")
+        .sort({ createdAt: -1 });
     return parcels;
 };
 
@@ -118,7 +122,6 @@ const cancelParcel = async (parcelId: string, userInfo: JwtPayload) => {
     }
 
     const isOwner = parcel.sender.toString() === userInfo.userId;
-
     const isAdmin = userInfo.role === Role.ADMIN;
 
     if (!isOwner && !isAdmin) {
@@ -147,7 +150,6 @@ const cancelParcel = async (parcelId: string, userInfo: JwtPayload) => {
     });
 
     await parcel.save();
-
     return parcel;
 };
 
@@ -162,11 +164,6 @@ const updateParcelStatus = async (
         throw new AppError(httpStatus.NOT_FOUND, "Parcel not found");
     }
 
-    if (parcel.status === "CANCELLED") {
-        parcel.isBlocked = true;
-        await parcel.save();
-        return parcel;
-    }
     parcel.status = status;
     parcel.statusLogs.push({
         status,
@@ -179,6 +176,20 @@ const updateParcelStatus = async (
     return parcel;
 };
 
+const trackParcelById = async (trackingId: string) => {
+    const parcel = await Parcel.findOne({ trackingId }).select(
+        "trackingId status statusLogs createdAt"
+    );
+
+    if (!parcel) {
+        throw new AppError(
+            httpStatus.NOT_FOUND,
+            "No parcel found with this tracking ID."
+        );
+    }
+    return parcel;
+};
+
 export const parcelService = {
     createParcel,
     getAllParcelsByAdmin,
@@ -186,4 +197,5 @@ export const parcelService = {
     getParcelsByReceiver,
     cancelParcel,
     updateParcelStatus,
+    trackParcelById,
 };

@@ -21,7 +21,7 @@ const statusLogSchema = new Schema<IStatusLog>(
             type: String,
         },
     },
-    { _id: false }
+    { _id: false } 
 );
 
 const parcelSchema = new Schema<IParcel>(
@@ -75,7 +75,6 @@ parcelSchema.pre("save", async function (next) {
         const year = date.getFullYear();
         const month = String(date.getMonth() + 1).padStart(2, "0");
         const day = String(date.getDate()).padStart(2, "0");
-
         const randomPart = Math.floor(100000 + Math.random() * 900000);
         this.trackingId = `TRK-${year}${month}${day}-${randomPart}`;
     }

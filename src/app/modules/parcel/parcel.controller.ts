@@ -4,7 +4,6 @@ import { sendResponse } from "../../utils/sendResponse";
 import httpStatus from "http-status-codes";
 import { parcelService } from "./parcel.service";
 import { JwtPayload } from "jsonwebtoken";
-import AppError from "../../errorHelpers/AppError";
 
 const createParcel = catchAsync(
     async (req: Request, res: Response, next: NextFunction) => {
@@ -23,7 +22,7 @@ const createParcel = catchAsync(
 
 const getAllParcelsByAdmin = catchAsync(
     async (req: Request, res: Response, next: NextFunction) => {
-        const result = await parcelService.getAllParcelsByAdmin();
+        const result = await parcelService.getAllParcelsByAdmin(req.query);
         sendResponse(res, {
             statusCode: httpStatus.OK,
             success: true,
@@ -87,17 +86,23 @@ const updateParcelStatus = catchAsync(
             notes,
             (req.user as JwtPayload).userId
         );
-        if (result.isBlocked) {
-            throw new AppError(
-                httpStatus.BAD_REQUEST,
-                "Parcel is cancelled and cannot be updated",
-                ""
-            );
-        }
         sendResponse(res, {
             statusCode: httpStatus.OK,
             success: true,
             message: "Parcel status updated successfully",
+            data: result,
+        });
+    }
+);
+
+const trackParcelById = catchAsync(
+    async (req: Request, res: Response, next: NextFunction) => {
+        const { trackingId } = req.params;
+        const result = await parcelService.trackParcelById(trackingId);
+        sendResponse(res, {
+            statusCode: httpStatus.OK,
+            success: true,
+            message: "Parcel tracking information retrieved successfully",
             data: result,
         });
     }
@@ -110,4 +115,5 @@ export const parcelController = {
     getParcelsByReceiver,
     cancelParcel,
     updateParcelStatus,
+    trackParcelById,
 };
