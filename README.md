@@ -174,6 +174,7 @@ Each parcel follows a defined lifecycle, tracked by its status, which is updated
 | GET    | `/incoming-parcels`     | RECEIVER       | Get all parcels addressed to the receiver.      |
 | GET    | `/all`                  | ADMIN          | Get a list of all parcels in the system.        |
 | GET    | `/all?status=DELIVERED` | ADMIN          | Get a list of all parcels with filter.          |
+| GET    | `/track/:trackId`       | ADMIN          | Get parcel by track id.                         |
 | PATCH  | `/cancel/:id`           | SENDER / ADMIN | Cancel a parcel in REQUESTED or APPROVED state. |
 | PATCH  | `/update-status/:id`    | ADMIN          | Update the delivery status of a parcel.         |
 
